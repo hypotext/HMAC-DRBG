@@ -378,7 +378,9 @@ int mbedtls_hmac_drbg_random_with_add( void *p_rng,
     mbedtls_hmac_drbg_update( ctx, additional, add_len );
 
     /* 7. Update reseed counter */
-    ctx->reseed_counter++;
+    reseed_counter = ctx->reseed_counter;
+    ctx->reseed_counter = reseed_counter + 1;
+    // ctx->reseed_counter++;
 
     /* 8. Done */
     return( 0 );

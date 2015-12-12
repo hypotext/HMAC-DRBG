@@ -10,7 +10,7 @@ Definition DRBG_instantiate_function (instantiate_algorithm: list Z -> list Z ->
   else match prediction_resistance_flag, prediction_resistance_supported with
          | true, false => ENTROPY.error ENTROPY.generic_error entropy_stream
          | _,_ =>
-           if Z.gtb (Z.of_nat (length personalization_string)) max_personalization_string_length then ENTROPY.error ENTROPY.generic_error entropy_stream
+           if Z.gtb (Zlength personalization_string) max_personalization_string_length then ENTROPY.error ENTROPY.generic_error entropy_stream
            else
              let security_strength := requested_instantiation_security_strength in (* TODO actually follow specs *)
              match get_entropy security_strength min_entropy_length max_entropy_length prediction_resistance_flag entropy_stream with

@@ -34,7 +34,7 @@ Definition DRBG_generate_function (generate_algorithm: Z -> DRBG_working_state -
   else
     if Z.gtb requested_security_strength security_strength then ENTROPY.error ENTROPY.generic_error entropy_stream
     else
-      if Z.gtb (Z.of_nat (length additional_input)) max_additional_input_length then ENTROPY.error ENTROPY.generic_error entropy_stream
+      if Z.gtb (Zlength additional_input) max_additional_input_length then ENTROPY.error ENTROPY.generic_error entropy_stream
       else
         if prediction_resistance_request && (negb prediction_resistance_flag) then ENTROPY.error ENTROPY.generic_error entropy_stream
         else

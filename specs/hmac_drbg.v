@@ -2,140 +2,140 @@ Require Import Clightdefs.
 
 Local Open Scope Z_scope.
 
-Definition _HMAC_Final : ident := 444%positive.
-Definition _HMAC_Init : ident := 436%positive.
-Definition _HMAC_Update : ident := 447%positive.
-Definition _K : ident := 109%positive.
-Definition _Nh : ident := 424%positive.
-Definition _Nl : ident := 432%positive.
-Definition _SHA256state_st : ident := 428%positive.
-Definition _V : ident := 12%positive.
-Definition ___builtin_addl : ident := 4%positive.
-Definition ___builtin_annot : ident := 451%positive.
-Definition ___builtin_annot_intval : ident := 433%positive.
-Definition ___builtin_bswap : ident := 457%positive.
-Definition ___builtin_bswap16 : ident := 462%positive.
-Definition ___builtin_bswap32 : ident := 435%positive.
-Definition ___builtin_clz : ident := 454%positive.
-Definition ___builtin_ctz : ident := 430%positive.
-Definition ___builtin_fabs : ident := 455%positive.
-Definition ___builtin_fmadd : ident := 429%positive.
-Definition ___builtin_fmax : ident := 474%positive.
-Definition ___builtin_fmin : ident := 418%positive.
-Definition ___builtin_fmsub : ident := 466%positive.
-Definition ___builtin_fnmadd : ident := 445%positive.
-Definition ___builtin_fnmsub : ident := 453%positive.
-Definition ___builtin_fsqrt : ident := 426%positive.
-Definition ___builtin_membar : ident := 475%positive.
-Definition ___builtin_memcpy_aligned : ident := 456%positive.
-Definition ___builtin_mull : ident := 6%positive.
-Definition ___builtin_negl : ident := 3%positive.
-Definition ___builtin_read16_reversed : ident := 420%positive.
-Definition ___builtin_read32_reversed : ident := 427%positive.
-Definition ___builtin_subl : ident := 5%positive.
-Definition ___builtin_va_arg : ident := 448%positive.
-Definition ___builtin_va_copy : ident := 464%positive.
-Definition ___builtin_va_end : ident := 467%positive.
-Definition ___builtin_va_start : ident := 441%positive.
-Definition ___builtin_write16_reversed : ident := 1%positive.
-Definition ___builtin_write32_reversed : ident := 2%positive.
-Definition ___compcert_va_composite : ident := 419%positive.
-Definition ___compcert_va_float64 : ident := 423%positive.
-Definition ___compcert_va_int32 : ident := 459%positive.
-Definition ___compcert_va_int64 : ident := 422%positive.
-Definition ___i64_dtos : ident := 468%positive.
-Definition ___i64_dtou : ident := 469%positive.
-Definition ___i64_sar : ident := 449%positive.
-Definition ___i64_sdiv : ident := 437%positive.
-Definition ___i64_shl : ident := 416%positive.
-Definition ___i64_shr : ident := 431%positive.
-Definition ___i64_smod : ident := 421%positive.
-Definition ___i64_stod : ident := 460%positive.
-Definition ___i64_stof : ident := 461%positive.
-Definition ___i64_udiv : ident := 450%positive.
-Definition ___i64_umod : ident := 443%positive.
-Definition ___i64_utod : ident := 473%positive.
-Definition ___i64_utof : ident := 471%positive.
-Definition _add_len : ident := 105%positive.
-Definition _additional : ident := 104%positive.
-Definition _ctx : ident := 425%positive.
-Definition _custom : ident := 118%positive.
-Definition _data : ident := 458%positive.
-Definition _data_len : ident := 112%positive.
-Definition _dummy : ident := 27%positive.
-Definition _entropy_len : ident := 14%positive.
-Definition _free : ident := 69%positive.
-Definition _get_entropy : ident := 98%positive.
-Definition _h : ident := 446%positive.
 Definition _hmac : ident := 85%positive.
-Definition _hmac_ctx : ident := 10%positive.
-Definition _hmac_ctx_st : ident := 415%positive.
-Definition _i_ctx : ident := 434%positive.
-Definition _ilen : ident := 93%positive.
-Definition _info : ident := 81%positive.
-Definition _input : ident := 92%positive.
-Definition _interval : ident := 124%positive.
-Definition _key : ident := 472%positive.
-Definition _keylen : ident := 89%positive.
-Definition _left : ident := 128%positive.
-Definition _len : ident := 452%positive.
-Definition _main : ident := 417%positive.
-Definition _malloc : ident := 68%positive.
-Definition _mbedtls_hmac_drbg_context : ident := 17%positive.
-Definition _mbedtls_hmac_drbg_free : ident := 133%positive.
-Definition _mbedtls_hmac_drbg_init : ident := 103%positive.
-Definition _mbedtls_hmac_drbg_random : ident := 132%positive.
-Definition _mbedtls_hmac_drbg_random_with_add : ident := 131%positive.
-Definition _mbedtls_hmac_drbg_reseed : ident := 117%positive.
-Definition _mbedtls_hmac_drbg_seed : ident := 120%positive.
-Definition _mbedtls_hmac_drbg_seed_buf : ident := 113%positive.
-Definition _mbedtls_hmac_drbg_set_entropy_len : ident := 123%positive.
-Definition _mbedtls_hmac_drbg_set_prediction_resistance : ident := 122%positive.
-Definition _mbedtls_hmac_drbg_set_reseed_interval : ident := 125%positive.
-Definition _mbedtls_hmac_drbg_update : ident := 111%positive.
-Definition _mbedtls_md_context_t : ident := 11%positive.
-Definition _mbedtls_md_free : ident := 97%positive.
-Definition _mbedtls_md_get_size : ident := 80%positive.
-Definition _mbedtls_md_hmac_finish : ident := 96%positive.
-Definition _mbedtls_md_hmac_reset : ident := 91%positive.
-Definition _mbedtls_md_hmac_starts : ident := 90%positive.
-Definition _mbedtls_md_hmac_update : ident := 94%positive.
-Definition _mbedtls_md_info_from_string : ident := 77%positive.
-Definition _mbedtls_md_info_from_type : ident := 79%positive.
-Definition _mbedtls_md_info_t : ident := 7%positive.
-Definition _mbedtls_md_setup : ident := 87%positive.
-Definition _mbedtls_zeroize : ident := 102%positive.
-Definition _md_ctx : ident := 463%positive.
-Definition _md_info : ident := 8%positive.
-Definition _md_len : ident := 106%positive.
-Definition _md_name : ident := 76%positive.
-Definition _md_size : ident := 119%positive.
-Definition _md_type : ident := 78%positive.
-Definition _memcpy : ident := 465%positive.
-Definition _memset : ident := 439%positive.
-Definition _mocked_sha256_info : ident := 75%positive.
-Definition _n : ident := 442%positive.
-Definition _num : ident := 470%positive.
-Definition _o_ctx : ident := 438%positive.
-Definition _out : ident := 129%positive.
-Definition _out_len : ident := 127%positive.
-Definition _output : ident := 95%positive.
-Definition _p : ident := 440%positive.
-Definition _p_rng : ident := 126%positive.
-Definition _prediction_resistance : ident := 15%positive.
-Definition _reseed_counter : ident := 13%positive.
-Definition _reseed_interval : ident := 16%positive.
-Definition _resistance : ident := 121%positive.
-Definition _ret : ident := 82%positive.
-Definition _rounds : ident := 107%positive.
-Definition _seed : ident := 115%positive.
-Definition _seedlen : ident := 116%positive.
-Definition _sep : ident := 108%positive.
 Definition _sep_value : ident := 110%positive.
-Definition _sha_ctx : ident := 86%positive.
-Definition _test_md_get_size : ident := 83%positive.
 Definition _use_len : ident := 130%positive.
+Definition _mbedtls_hmac_drbg_update : ident := 111%positive.
+Definition _num : ident := 22%positive.
+Definition _V : ident := 12%positive.
+Definition _left : ident := 128%positive.
+Definition _sep : ident := 108%positive.
+Definition ___builtin_fmsub : ident := 63%positive.
+Definition _hmac_ctx : ident := 10%positive.
+Definition ___i64_utod : ident := 44%positive.
+Definition ___builtin_negl : ident := 3%positive.
+Definition ___builtin_write16_reversed : ident := 1%positive.
+Definition _interval : ident := 124%positive.
+Definition _key : ident := 88%positive.
+Definition _md_size : ident := 119%positive.
+Definition _mbedtls_md_info_from_type : ident := 79%positive.
+Definition _HMAC_Init : ident := 72%positive.
+Definition _K : ident := 109%positive.
+Definition _md_type : ident := 78%positive.
+Definition _malloc : ident := 68%positive.
+Definition ___builtin_fabs : ident := 28%positive.
+Definition _mbedtls_hmac_drbg_seed_buf : ident := 113%positive.
+Definition _mbedtls_zeroize : ident := 102%positive.
+Definition _mbedtls_md_info_t : ident := 7%positive.
+Definition _mbedtls_hmac_drbg_init : ident := 103%positive.
+Definition _p : ident := 101%positive.
+Definition _keylen : ident := 89%positive.
+Definition ___i64_stof : ident := 45%positive.
+Definition _dummy : ident := 27%positive.
+Definition _ctx : ident := 84%positive.
+Definition _ret : ident := 82%positive.
+Definition _o_ctx : ident := 25%positive.
+Definition _prediction_resistance : ident := 15%positive.
+Definition ___builtin_fmax : ident := 60%positive.
+Definition _out : ident := 129%positive.
+Definition _len : ident := 114%positive.
+Definition ___builtin_membar : ident := 32%positive.
+Definition _mbedtls_hmac_drbg_reseed : ident := 117%positive.
+Definition _memcpy : ident := 70%positive.
+Definition _mbedtls_md_hmac_finish : ident := 96%positive.
+Definition _mbedtls_hmac_drbg_context : ident := 17%positive.
+Definition _md_info : ident := 8%positive.
+Definition _out_len : ident := 127%positive.
+Definition ___i64_stod : ident := 43%positive.
+Definition ___i64_sar : ident := 53%positive.
+Definition ___i64_sdiv : ident := 47%positive.
+Definition _mbedtls_md_hmac_reset : ident := 91%positive.
+Definition ___builtin_va_end : ident := 36%positive.
+Definition _get_entropy : ident := 98%positive.
+Definition _Nl : ident := 19%positive.
+Definition ___builtin_fmin : ident := 61%positive.
+Definition _mbedtls_md_free : ident := 97%positive.
+Definition _mbedtls_hmac_drbg_set_prediction_resistance : ident := 122%positive.
+Definition ___compcert_va_int32 : ident := 37%positive.
+Definition _mbedtls_hmac_drbg_free : ident := 133%positive.
+Definition ___i64_dtou : ident := 42%positive.
+Definition _mbedtls_hmac_drbg_random : ident := 132%positive.
+Definition _memset : ident := 71%positive.
+Definition _mocked_sha256_info : ident := 75%positive.
+Definition ___builtin_va_arg : ident := 34%positive.
+Definition ___builtin_memcpy_aligned : ident := 29%positive.
+Definition _output : ident := 95%positive.
+Definition ___builtin_bswap32 : ident := 55%positive.
+Definition ___i64_shl : ident := 51%positive.
+Definition ___i64_udiv : ident := 48%positive.
+Definition ___builtin_fnmsub : ident := 65%positive.
+Definition ___compcert_va_composite : ident := 40%positive.
+Definition _data_len : ident := 112%positive.
+Definition _reseed_interval : ident := 16%positive.
+Definition ___compcert_va_int64 : ident := 38%positive.
+Definition ___i64_utof : ident := 46%positive.
+Definition _free : ident := 69%positive.
+Definition ___builtin_fmadd : ident := 62%positive.
+Definition ___builtin_bswap : ident := 54%positive.
+Definition _input : ident := 92%positive.
+Definition _additional : ident := 104%positive.
+Definition ___builtin_write32_reversed : ident := 2%positive.
+Definition _resistance : ident := 121%positive.
+Definition ___builtin_annot_intval : ident := 31%positive.
+Definition ___i64_smod : ident := 49%positive.
+Definition ___builtin_read16_reversed : ident := 66%positive.
+Definition ___builtin_fsqrt : ident := 59%positive.
+Definition ___builtin_addl : ident := 4%positive.
+Definition _mbedtls_md_hmac_update : ident := 94%positive.
+Definition ___builtin_ctz : ident := 58%positive.
+Definition _mbedtls_hmac_drbg_set_reseed_interval : ident := 125%positive.
 Definition _v : ident := 99%positive.
+Definition _data : ident := 21%positive.
+Definition _h : ident := 18%positive.
+Definition _md_len : ident := 106%positive.
+Definition _mbedtls_md_get_size : ident := 80%positive.
+Definition _reseed_counter : ident := 13%positive.
+Definition ___builtin_va_start : ident := 33%positive.
+Definition _mbedtls_hmac_drbg_set_entropy_len : ident := 123%positive.
+Definition ___builtin_bswap16 : ident := 56%positive.
+Definition _seed : ident := 115%positive.
+Definition _n : ident := 100%positive.
+Definition _Nh : ident := 20%positive.
+Definition _ilen : ident := 93%positive.
+Definition _add_len : ident := 105%positive.
+Definition _p_rng : ident := 126%positive.
+Definition _i_ctx : ident := 24%positive.
+Definition ___builtin_read32_reversed : ident := 67%positive.
+Definition ___builtin_subl : ident := 5%positive.
+Definition _HMAC_Update : ident := 73%positive.
+Definition ___i64_umod : ident := 50%positive.
+Definition _HMAC_Final : ident := 74%positive.
+Definition _rounds : ident := 107%positive.
+Definition ___builtin_clz : ident := 57%positive.
+Definition _entropy_len : ident := 14%positive.
+Definition ___builtin_mull : ident := 6%positive.
+Definition _custom : ident := 118%positive.
+Definition _hmac_ctx_st : ident := 26%positive.
+Definition _main : ident := 134%positive.
+Definition ___compcert_va_float64 : ident := 39%positive.
+Definition _mbedtls_md_hmac_starts : ident := 90%positive.
+Definition _test_md_get_size : ident := 83%positive.
+Definition _mbedtls_md_context_t : ident := 11%positive.
+Definition _seedlen : ident := 116%positive.
+Definition _info : ident := 81%positive.
+Definition _md_name : ident := 76%positive.
+Definition _sha_ctx : ident := 86%positive.
+Definition _md_ctx : ident := 9%positive.
+Definition _mbedtls_hmac_drbg_random_with_add : ident := 131%positive.
+Definition ___builtin_fnmadd : ident := 64%positive.
+Definition ___i64_shr : ident := 52%positive.
+Definition ___i64_dtos : ident := 41%positive.
+Definition _mbedtls_md_setup : ident := 87%positive.
+Definition _mbedtls_md_info_from_string : ident := 77%positive.
+Definition _mbedtls_hmac_drbg_seed : ident := 120%positive.
+Definition ___builtin_va_copy : ident := 35%positive.
+Definition ___builtin_annot : ident := 30%positive.
+Definition _SHA256state_st : ident := 23%positive.
 
 Definition v_mocked_sha256_info := {|
   gvar_info := (Tstruct _mbedtls_md_info_t noattr);
@@ -1283,20 +1283,23 @@ Definition f_mbedtls_hmac_drbg_random_with_add := {|
                                (Etempvar _additional (tptr tuchar)) ::
                                (Etempvar _add_len tuint) :: nil))
                             (Ssequence
-                              (Sassign
+                              (Sset _reseed_counter
                                 (Efield
                                   (Ederef
                                     (Etempvar _ctx (tptr (Tstruct _mbedtls_hmac_drbg_context noattr)))
                                     (Tstruct _mbedtls_hmac_drbg_context noattr))
-                                  _reseed_counter tint)
-                                (Ebinop Oadd
+                                  _reseed_counter tint))
+                              (Ssequence
+                                (Sassign
                                   (Efield
                                     (Ederef
                                       (Etempvar _ctx (tptr (Tstruct _mbedtls_hmac_drbg_context noattr)))
                                       (Tstruct _mbedtls_hmac_drbg_context noattr))
                                     _reseed_counter tint)
-                                  (Econst_int (Int.repr 1) tint) tint))
-                              (Sreturn (Some (Econst_int (Int.repr 0) tint))))))))))))))))))
+                                  (Ebinop Oadd
+                                    (Etempvar _reseed_counter tint)
+                                    (Econst_int (Int.repr 1) tint) tint))
+                                (Sreturn (Some (Econst_int (Int.repr 0) tint)))))))))))))))))))
 |}.
 
 Definition f_mbedtls_hmac_drbg_random := {|
@@ -1694,3 +1697,4 @@ prog_types := composites;
 prog_comp_env := make_composite_env composites;
 prog_comp_env_eq := refl_equal _
 |}.
+

@@ -24,7 +24,7 @@ Fixpoint DRBG_generate_check (state_handle: DRBG_state_handle) (internal_states:
     | [] => True
     | (key, v, additional_input, entropy_input_reseed)::[] =>
       let test_HMAC256_DRBG_reseed_function := HMAC256_DRBG_reseed_function 32 32 256 in
-      let test_HMAC256_DRBG_generate_function := HMAC256_DRBG_generate_function test_HMAC256_DRBG_reseed_function 128 128 in
+      let test_HMAC256_DRBG_generate_function := HMAC256_DRBG_generate_function test_HMAC256_DRBG_reseed_function 1024 128 128 in
       let key := hexstring_to_Zlist key in
       let value := hexstring_to_Zlist v in
       let additional_input := hexstring_to_Zlist additional_input in
@@ -35,7 +35,7 @@ Fixpoint DRBG_generate_check (state_handle: DRBG_state_handle) (internal_states:
       end
     | (key, v, additional_input, entropy_input_reseed)::tl =>
       let test_HMAC256_DRBG_reseed_function := HMAC256_DRBG_reseed_function 32 32 256 in
-      let test_HMAC256_DRBG_generate_function := HMAC256_DRBG_generate_function test_HMAC256_DRBG_reseed_function 128 128 in
+      let test_HMAC256_DRBG_generate_function := HMAC256_DRBG_generate_function test_HMAC256_DRBG_reseed_function 1024 128 128 in
       let key := hexstring_to_Zlist key in
       let value := hexstring_to_Zlist v in
       let additional_input := hexstring_to_Zlist additional_input in

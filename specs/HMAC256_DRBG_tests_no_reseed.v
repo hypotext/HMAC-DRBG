@@ -22,7 +22,7 @@ Definition get_nonce_dummy (result: string) (_: unit) := hexstring_to_Zlist resu
 Definition noop_reseed_function (s: ENTROPY.stream) (x: DRBG_state_handle) (_: bool) (_: list Z) := ENTROPY.success x s.
 
 Fixpoint DRBG_generate_check (state_handle: DRBG_state_handle) (internal_states: list (string * string * string)) (returned_bits: string) :=
-  let test_HMAC256_DRBG_generate_function := HMAC256_DRBG_generate_function noop_reseed_function 128 128 in
+  let test_HMAC256_DRBG_generate_function := HMAC256_DRBG_generate_function noop_reseed_function 1024 128 128 in
   match internal_states with
     | [] => True
     | (key, v, additional_input)::[] =>
