@@ -6,3 +6,5 @@ vst_hmac
 *.vo
 *.glob
 *~
+*#
+.#*
