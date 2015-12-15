@@ -54,9 +54,13 @@ should i say "after n generate calls, the stream returned is equal to the origin
 
 prove that after 1 generate call
 (maybe i shouldn't be thinking in terms of # calls???)
-___???
+if reseed_ctr then ... otherwise ... ?
 
+maybe i should have a version that RETURNS the bits that it took off the head of the stream
+/ returns their length / concats the stream
 
+do the proof first for (filter entropy_stream)
+(ALSO naphat has some relevant proofs/tests in entropy.v)
 
 if the entropy fails, then the reseed fails, the gen func helper fails, and the gen func fails (up to the top level). so, i have to deal with calling generate until there is a success. that might not terminate? 
 
