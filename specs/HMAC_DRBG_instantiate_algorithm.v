@@ -32,7 +32,11 @@ Definition value2 := HMAC256' key2 value.
 Lemma printing: key2 = [].
 vm_compute.
 *)
-Definition HMAC_DRBG_instantiate_algorithm (HMAC: list Z -> list Z -> list Z) (entropy_input nonce personalization_string: list Z) (security_strength: Z): DRBG_working_state :=
+Definition HMAC_DRBG_instantiate_algorithm 
+           (HMAC: list Z -> list Z -> list Z) 
+           (entropy_input nonce personalization_string: list Z) 
+           (security_strength: Z):
+  DRBG_working_state :=
   let seed_material := entropy_input ++ nonce ++ personalization_string in
   let key := initial_key in
   let value := initial_value in

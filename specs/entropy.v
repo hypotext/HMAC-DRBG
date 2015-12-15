@@ -11,13 +11,11 @@ Parameter stream: Type.
 
 Inductive error_code: Type :=
 | catastrophic_error
-| generic_error
-.
+| generic_error.
 
 Inductive result X: Type: Type :=
 | success: X -> stream -> @result X
-| error : error_code -> stream -> @result X
-.
+| error : error_code -> stream -> @result X.
 
 Arguments success {X} _ _. 
 Arguments error {X} _ _. 
@@ -64,18 +62,21 @@ Arguments error {X} _ _.
 Fixpoint get_bits (k: nat) (s: stream): result (list bool) :=
   match k with
     | O => success [] s
-    | S k' => match get_bits k' s with
-                | error e s' => error  e s'
-                | success b s' =>
-                  match s' O with
-                    | None => error catastrophic_error (fun i => match nat_compare i k' with
-                                                                   | Lt => s i
-                                                                   | Eq | Gt => s (1 + i)%nat
-                                                                 end
-                                                       )
-                    | Some e => success (b ++ [e]) (fun i => s (k + i)%nat)
-                  end
-              end
+    | S k' =>
+      match get_bits k' s with (* recursive call -- get the (k-1) bits *)
+      | error e s' => error  e s'
+      | success b s' =>
+        match s' O with (* get the first bit *)
+        | None =>
+          (* what does the caller do on error? call again? *)
+          error catastrophic_error (fun i => match nat_compare i k' with
+                                             | Lt => s i
+                                             | Eq | Gt => s (1 + i)%nat
+                                             end)
+        | Some e => success (b ++ [e]) (fun i => s (k + i)%nat)
+        (* not 1+i? (otherwise it'll be moving it 1 + 2 + 3 forward instead of 3 forward. not ::? *)
+        end
+      end
   end.
 
 Example get_bits_test1:

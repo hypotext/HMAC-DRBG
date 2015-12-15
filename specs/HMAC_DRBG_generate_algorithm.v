@@ -409,7 +409,12 @@ Proof.
   reflexivity.
 Qed.
 
-Definition HMAC_DRBG_generate_algorithm (HMAC: list Z -> list Z -> list Z) (reseed_interval: Z) (working_state: DRBG_working_state) (requested_number_of_bytes: Z) (additional_input: list Z): DRBG_generate_algorithm_result :=
+Definition HMAC_DRBG_generate_algorithm 
+           (HMAC: list Z -> list Z -> list Z) 
+           (reseed_interval: Z) 
+           (working_state: DRBG_working_state) 
+           (requested_number_of_bytes: Z) 
+           (additional_input: list Z): DRBG_generate_algorithm_result :=
   let '(v, key, reseed_counter) := working_state in
   if Z.gtb reseed_counter reseed_interval then generate_algorithm_reseed_required
   else

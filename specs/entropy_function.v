@@ -36,3 +36,4 @@ assuming it's called 10 times a second,
 
 > The NIST DRBG mechanism reseeds on either (a) first use; or (b) at the end of the seed life. The seed life of the DRBG mechanism is deliberately set high to reduce the risk of an attacker forcing a reseed by repeatedly requesting random data (which she could skew/seed herself?)
  *)
+
