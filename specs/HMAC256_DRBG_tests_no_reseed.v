@@ -64,7 +64,128 @@ Lemma test0: DRBG_check
                  ("6dd2cd5b1edba4b620d195ce26ad6845b063211d11e591432de37a3ad793f66c"%string, "6b94e773e3469353a1ca8face76b238c5919d62a150a7dfc589ffa11c30b5b94"%string, ""%string)
                ]
                "e528e9abf2dece54d47c7e75e5fe302149f817ea9fb4bee6f4199697d04d5b89d54fbb978a15b5c443c9ec21036d2460b6f73ebad0dc2aba6e624abf07745bc107694bb7547bb0995f70de25d6b29e2d3011bb19d27676c07162c8b5ccde0668961df86803482cb37ed6d5c0bb8d50cf1f50d476aa0458bdaba806f48be9dcb8"%string.
-  vm_compute. repeat (split;auto). Qed.
+Proof.
+  unfold DRBG_check.
+  unfold HMAC256_DRBG_instantiate_function.
+  unfold DRBG_instantiate_function.
+  unfold HMAC256_DRBG_instantiate_algorithm.
+  unfold HMAC_DRBG_instantiate_algorithm.HMAC_DRBG_instantiate_algorithm.
+  (* this only does instantiate? when does it call generate? *)
+  unfold DRBG_generate_check.
+  unfold HMAC256_DRBG_generate_function.
+  unfold DRBG_generate_function.
+  unfold DRBG_generate_function_helper.
+  unfold HMAC256_DRBG_generate_algorithm.
+  unfold HMAC_DRBG_generate_algorithm.HMAC_DRBG_generate_algorithm.
+  (* what about generate being called multiple times? *)
+  vm_compute. repeat (split;auto).
+Qed.
+
+Lemma test0_all_parametrized: forall entropy_input nonce key value per_string st1 st2 st3 stA stB stC returned_bits,
+    (* maybe i should use a different function here besides DRBG_check *)
+  DRBG_check 
+    entropy_input nonce key value per_string
+    [ (st1, st2, st3); (stA, stB, stC)]
+    returned_bits.
+Proof.
+  intros.
+  unfold DRBG_check.
+  unfold HMAC256_DRBG_instantiate_function.
+  unfold DRBG_instantiate_function.
+  unfold HMAC256_DRBG_instantiate_algorithm.
+  unfold HMAC_DRBG_instantiate_algorithm.HMAC_DRBG_instantiate_algorithm.
+  (* this only does instantiate? when does it call generate? *)
+  unfold DRBG_generate_check.
+  unfold HMAC256_DRBG_generate_function.
+  Locate HMAC256_DRBG_generate_function.
+  unfold DRBG_generate_function.
+  unfold DRBG_generate_function_helper.
+  unfold HMAC256_DRBG_generate_algorithm.
+  unfold HMAC_DRBG_generate_algorithm.HMAC_DRBG_generate_algorithm.
+  (* simpl. *)
+  (* what about generate being called multiple times? *)
+Admitted.
+
+(* TODO: another for Instantiate *)
+
+Check HMAC256_DRBG_generate_function.
+(* returns ENTROPY.result (list Z * DRBG_state_handle) *)
+Print ENTROPY.result.
+
+(* Definition DRBG_generate_function
+           (generate_algorithm: Z -> DRBG_working_state -> Z -> list Z
+                                -> DRBG_generate_algorithm_result)
+           (reseed_function: ENTROPY.stream -> DRBG_state_handle -> bool
+                             -> list Z -> ENTROPY.result DRBG_state_handle)
+           (reseed_interval: Z)
+           (max_number_of_bytes_per_request: Z)
+           (max_additional_input_length: Z)
+           (entropy_stream: ENTROPY.stream)
+           (state_handle: DRBG_state_handle)
+           (requested_number_of_bytes requested_security_strength: Z)
+           (prediction_resistance_request: bool)
+           (additional_input: list Z): *)
+
+Lemma test0_generate:
+  forall value' key' z,
+    (match HMAC256_DRBG_generate_function
+             noop_reseed_function 1024 128 128 (stream_dummy "")
+             (value', key', 0, 258, z) 128 257 false nil with
+     (* reseed_counter = 0, additional input = nil, 257 = ? *)
+      | ENTROPY.success _ _ => true (* get params out later *)
+      | ENTROPY.error _ _ => false
+    end) = true.
+Proof.
+  intros.
+  unfold HMAC256_DRBG_generate_function.
+  unfold DRBG_generate_function.
+
+  Opaque DRBG_generate_function_helper.
+  simpl.
+  Transparent DRBG_generate_function_helper.
+  unfold DRBG_generate_function_helper.
+
+  Opaque HMAC256_DRBG_generate_algorithm.
+  simpl.
+  Transparent HMAC256_DRBG_generate_algorithm.
+  unfold HMAC256_DRBG_generate_algorithm.
+
+  unfold HMAC_DRBG_generate_algorithm.HMAC_DRBG_generate_algorithm.
+  Opaque HMAC_DRBG_generate_algorithm.HMAC_DRBG_generate_algorithm.
+  Opaque HMAC_DRBG_generate_algorithm.HMAC_DRBG_generate_helper_Z.
+  Opaque HMAC_DRBG_update.HMAC_DRBG_update.
+  Opaque firstn.
+  simpl.
+(* might have to prove/assert that reseed is never required *)
+  (* what about generate being called multiple times? *)
+
+  Transparent HMAC_DRBG_generate_algorithm.HMAC_DRBG_generate_algorithm.
+  Transparent HMAC_DRBG_generate_algorithm.HMAC_DRBG_generate_helper_Z.
+  Transparent HMAC_DRBG_update.HMAC_DRBG_update.
+
+Admitted.
+
+(* Inductive DRBG_generate_algorithm_result := *)
+(* | generate_algorithm_reseed_required: DRBG_generate_algorithm_result *)
+(* | generate_algorithm_success: list Z -> DRBG_working_state -> DRBG_generate_algorithm_result. *)
+
+Lemma test0_generate_inner:
+  forall value' key',
+    (match HMAC_DRBG_generate_algorithm.HMAC_DRBG_generate_algorithm
+           HMAC256_functional_prog.HMAC256 1024 (value', key', 0) 128 [] with
+      | DRBG_generate_algorithm_result.generate_algorithm_reseed_required => false
+      | DRBG_generate_algorithm_result.generate_algorithm_success _ _ => true
+    end) = true.
+Proof.
+  intros.
+  unfold HMAC_DRBG_generate_algorithm.HMAC_DRBG_generate_algorithm.
+  Opaque HMAC_DRBG_generate_algorithm.HMAC_DRBG_generate_helper_Z.
+  simpl.
+(* ? *)
+(* is my spec even executable? *)
+(* to start with, what equivalence do we want to prove between this and my generate (split out)? *)
+  
+Admitted.
 
 Lemma test1: DRBG_check
                "79737479ba4e7642a221fcfd1b820b134e9e3540a35bb48ffae29c20f5418ea3"%string
